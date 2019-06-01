@@ -3,7 +3,7 @@
     <a href="#" title="Close" class="modal-close" (click)="onClose()">
       Close
     </a>
-    <h1>New Player Form</h1>
+    <h1>{{ player ? 'Edit Player Form' : 'New Player Form' }}</h1>
     <div>
       <form #playerForm="ngForm" novalidate (ngSubmit)="onSubmit(playerForm)">
         <div class="form-group">
