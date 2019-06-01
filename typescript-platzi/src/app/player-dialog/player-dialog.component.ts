@@ -41,11 +41,11 @@ export class PlayerDialogComponent implements OnInit {
   }
 
   private newPlayer(playerFormValue): void {
-    const $key: string = this.playerService.addPlayer(playerFormValue).key;
+    const key: string = this.playerService.addPlayer(playerFormValue).key;
 
     const playerFormValueWithKey: Player = {
       ...playerFormValue,
-      $key
+      key
     };
 
     const formattedTeam: Team = {
@@ -62,10 +62,15 @@ export class PlayerDialogComponent implements OnInit {
   onSubmit(playerForm: NgForm): void {
     const playerFormValue: Player = { ...playerForm.value };
     if (playerForm.valid) {
-      // playerFormValue.leftFooted =
-      // playerFormValue.leftFooted === '' ? false : true;
-      this.newPlayer(playerFormValue);
-      window.location.replace('#');
+      playerFormValue.leftFooted = !playerFormValue.leftFooted
+        ? false
+        : playerFormValue.leftFooted;
     }
+    this.newPlayer(playerFormValue);
+    window.location.replace('#');
+  }
+
+  onClose(): void {
+    window.location.replace('#');
   }
 }

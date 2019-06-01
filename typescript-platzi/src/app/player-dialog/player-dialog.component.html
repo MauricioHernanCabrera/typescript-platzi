@@ -1,6 +1,8 @@
 <div id="open-modal" class="modal-window">
   <div>
-    <a href="#" title="Close" class="modal-close">Close</a>
+    <a href="#" title="Close" class="modal-close" (click)="onClose()">
+      Close
+    </a>
     <h1>New Player Form</h1>
     <div>
       <form #playerForm="ngForm" novalidate (ngSubmit)="onSubmit(playerForm)">
@@ -88,9 +90,10 @@
 
         <div class="form-group">
           <label for="leftFooted">Left Footed</label>
+
           <input
-            type="text"
-            class="form-control"
+            type="checkbox"
+            class="form-control checkbox"
             name="leftFooted"
             [ngModel]="player?.leftFooted"
             ngModel
