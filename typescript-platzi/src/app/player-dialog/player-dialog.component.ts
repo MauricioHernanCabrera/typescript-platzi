@@ -56,7 +56,7 @@ export class PlayerDialogComponent implements OnInit {
     };
     delete playerFormValueWithFormattedKey.$key;
     const moddifiedPlayers = this.team.players
-      ? this.team.players.map(player => {
+      ? this.team.players.map((player: any) => {
           return player.key === this.player.$key
             ? playerFormValueWithFormattedKey
             : player;
