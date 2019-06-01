@@ -24,6 +24,6 @@ export class PlayerTableComponent implements OnInit {
     this.selectedPlayer = null;
     setTimeout(() => {
       window.location.replace('#open');
-    });
+    }, 0);
   }
 }
