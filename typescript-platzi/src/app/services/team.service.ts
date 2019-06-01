@@ -4,7 +4,7 @@ import { Team } from '../interfaces/team';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-export const TeamsTableHeaders = ['name', 'country', 'players'];
+export const TeamsTableHeaders = ['Name', 'Country', 'Players'];
 
 @Injectable({
   providedIn: 'root'
@@ -19,10 +19,7 @@ export class TeamService {
   getTeams(): Observable<Team[]> {
     return this.teamsDb.snapshotChanges().pipe(
       map(changes => {
-        return changes.map(c => ({
-          $key: c.playload.key,
-          ...c.payload.val()
-        }));
+        return changes.map(c => ({ $key: c.payload.key, ...c.payload.val() }));
       })
     );
   }
